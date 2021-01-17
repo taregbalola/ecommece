@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div th:replace="fragments :: menu"></div>
+  <h1>[[#{app.title}]]</h1>
+  
+</div>
+<div align="center">
+
+    <h1>Country List</h1>
+    <a th:href="@{/showcountries}">Create New Product</a>
+    <br/><br/>
+     <h1>Country List</h1>
+    <a th:href="@{/countries/list}">Create New Product</a>
+    <br/><br/>
+     <h1>Product List</h1>
+    <a th:href="@{/new}">Product List</a>
+    <br/><br/>
+    <h1>Product List</h1>
+    <a th:href="@{/showCategory}">Create New Category</a>
+    <br/><br/>
+     <h1>cart</h1>
+    <a th:href="@{/cart}">Create New cart</a>
+     <h1>Product List</h1>
+    <a th:href="@{/category}">list category</a>
+    <br/><br/>
+    <h1>Product List</h1>
+    <a th:href="@{/listProduct}">list Product</a>
+    <br/><br/>
+    <h1>Brand List</h1>
+    <a th:href="@{/brands}">list brand</a>
+    <br/><br/>
+    <h1>create brand</h1>
+    <a th:href="@{/brand/new}">create brand</a>
+    <br/><br/>
+</div>   
+</body>
+</html>

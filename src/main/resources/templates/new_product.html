@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Create New Product</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+   
+       <div th:if="${product.id == null}"> <h1>add new Product</h1></div> 
+   
+    <div th:unless="${product.id == null}"> <h1>Edit Product</h1></div>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${product}"
+           method="post" enctype="multipart/form-data">
+            
+         <input type="hidden" th:field="*{id}" th:value="${product.id}"/>
+         <div class="col-xs-12 col-sm col-md-12 col-lg-12 col-xl-12">
+         <br/>
+               <ul class="nav nav-tabs" id="myTab" role="tablist">
+                 <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home">overview</a>
+                 </li>
+                  <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#description">description</a>
+                 </li>
+                  <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#image">image</a>
+                 </li>
+                  <li class="nav-item">
+                  <a class="nav-link disabled">disabled</a>
+                 </li>
+               </ul>
+               
+               <div class="tab-content">
+                 
+               <div role="tabpanel" class="tab-pane active" id="home">         
+              <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">Product Name</label>
+                  <div class="col-sm-6">
+                   <input type="text" class="form-control" th:field="*{name}"/>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">Product brand</label>
+                  <div class="col-sm-6">
+                   <input type="text" class="form-control" th:field="*{brand}"/>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">made in:</label>
+                  <div class="col-sm-6">
+                   <input type="text" class="form-control" th:field="*{madein}" />
+                  </div>
+              </div>
+               <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">price:</label>
+                  <div class="col-sm-6">
+                   <input type="text" class="form-control" th:field="*{price}" />
+                  </div>
+              </div>
+            
+             
+            <div class="form-group row">
+            <label class="col-form-label col-sm-4">choose one more categories:</label>
+              
+              <div class="col-sm-4">
+              <select th:field="*{category}" class="form-control">
+              <th:block th:each="cat : ${lisCategories}">
+                      <option th:text="${cat.name}" th:value="${cat.id}"/>
+                    </th:block>
+                     </select>
+              </div>
+            </div>
+             </div>  
+                  
+                   <div role="tabpanel" class="tab-pane" id="description">
+                    <div class="form-group row">
+            <label class="col-form-label col-sm-4">Details #1:</label>
+             <div class="col-sm-4">
+                   <input type="text" class="form-control" placeholder="Name" name="detailName" required/>
+                    <input type="text" class="form-control"  placeholder="value" name="detailValue" required/>
+                  </div>
+                  </div>
+                    <div class="form-group row">
+            <label class="col-form-label col-sm-4">Details #2:</label>
+             <div class="col-sm-4">
+                   <input type="text" class="form-control" placeholder="Name" name="detailName" required/>
+                    <input type="text" class="form-control"  placeholder="value" name="detailValue" required/>
+                  </div>
+                  </div>
+                  <div class="form-group row">
+            <label class="col-form-label col-sm-4">Details #3:</label>
+             <div class="col-sm-4">
+                   <input type="text" class="form-control" placeholder="Name" name="detailName" required/>
+                    <input type="text" class="form-control"  placeholder="value" name="detailValue" required/>
+                  </div>
+                  </div>
+                    
+                   </div>
+                    <div role="tabpanel" class="tab-pane fade p-3" id="image">
+                        <div class="row">
+                           <div class="col border m-3">
+                           
+                           <p>
+                            <img alt="Main Image preview" id="thumbnail"
+                             th:src="${product.mainImage}"/>
+                           </p>
+                           
+                             <p>
+                               <label>Main Image:</label>
+                             </p>
+                             <p>
+                             <input type="file" name="primaryImage" id="primaryImage" accept="image/png ,image/jpeg"/>
+                          </p>
+                           </div>
+                            <div class="col border m-3">
+                             <p>
+                            <img alt="Main Image preview" id="thumbnail0"
+                            th:src="${product.extraImage1}"
+                            />
+                           </p>
+                             <p>
+                               <label>Extra Image 1:</label>
+                             </p>
+                              <p>
+                             <input type="file" name="extraImage"accept="image/png ,image/jpeg"
+                              />
+                          </p>
+                           </div>
+                            <div class="col border m-3">
+                             <p>
+                            <img alt="Main Image preview" id="thumbnail1"
+                             th:src="${product.extraImage2}"/>
+                           </p>
+                             <p>
+                               <label>Extra Image 2:</label>
+                             </p>
+                              <p>
+                             <input type="file" name="extraImage" accept="image/png ,image/jpeg"/>
+                          </p>
+                           </div>
+                            <div class="col border m-3">
+                             <p>
+                            <img alt="Main Image preview" id="thumbnail2"
+                            th:src="${product.extraImage3}"/>
+                           </p>
+                             <p>
+                               <label>Extra Image 3:</label>
+                             </p>
+                             <p>
+                             <input type="file" name="extraImage" accept="image/png ,image/jpeg"/>
+                          </p>
+                           </div>
+                        </div>
+                  
+                  
+               
+            
+            
+           
+               
+</div>                 
+    </div>             
+                                      
+               
+                    
+              <div class="text-center p-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+              
+            </div>  
+        </form>
+    </div>
+   <script type="text/javascript">
+   
+   $(document).ready(function(){
+  	 $('#primaryImage').change(function(){
+  		showImageThumbnail(this); 
+  	 });
+  	 
+  	 $("input[name='extraImage']").each(function(index){
+  		
+  		 $(this).change(function(){
+  			showExtraImageThumbnail(this,index); 
+  		 });
+  	 });
+  			
+  	 
+   });
+   
+   function showImageThumbnail(fileInput){
+   	file =fileInput.files[0];
+   	reader= new FileReader();
+   	
+   	reader.onload = function(e){
+   		$('#thumbnail').attr('src', e.target.result);
+   	};
+   	
+   	reader.readAsDataURL(file);
+   }
+   function showExtraImageThumbnail(fileInput,index){
+	   	file =fileInput.files[0];
+	   	reader= new FileReader();
+	   	
+	   	reader.onload = function(e){
+	   		$('#thumbnail' +index).attr('src', e.target.result);
+	   	};
+	   	
+	   	reader.readAsDataURL(file);
+	   }
+   
+   </script>
+    
+</body>
+</html>

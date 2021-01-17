@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Create New Product</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+   
+        <br />
+        <form action="#"
+           method="post" enctype="multipart/form-data">
+           
+         <div class="col-xs-12 col-sm col-md-12 col-lg-12 col-xl-12">
+         <br/>
+               <ul class="nav nav-tabs" id="myTab" role="tablist">
+                 <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#countries">Countries</a>
+                 </li>
+                  <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#states">States</a>
+                 </li>
+                 
+               </ul>
+               
+               <div class="tab-content">
+                 
+               <div role="tabpanel" class="tab-pane active" id="countries">         
+              <br />
+              <div>
+                 <input type="button" value="Load Country List" id="buttonLoadCountries" class="btn btn-primary m-2">
+              </div>
+            
+            <div>
+              <select id="dropDownCountries" class="form-control m-2" style="height: 300px" size="3">
+                
+              </select>
+            </div>
+             <div class="form-group row">
+                <label for="countryName" class="col-sm-2 col-form-label mt-2" id="labelCountryName">Country Name: </label>
+                <div>
+                   <input type="text" class="form-control mt-2" id="fieldCountryName" required>
+                </div>
+               
+             </div>
+                </div>
+               <div role="tabpanel" class="tab-pane" id="states">
+                
+               </div>
+              <div class="col-sm-4 mt-2">
+                  <input type="button" value="Add" id="buttonAdd" class="btn btn-secondary mr-2"/>
+                    <input type="button" value="Update" id="buttonUpdate" class="btn btn-secondary mr-2" disabled="disabled"/>
+                      <input type="button" value="Delete" id="buttonDelete" class="btn btn-secondary mr-2" disabled="disabled"/>
+                </div>
+           
+               
+                   
+                           
+               
+            
+            
+           
+               
+</div>                 
+    </div>             
+                                      
+               
+                    
+          </form>    
+    </div>
+    <script type="text/javascript">
+  
+      
+    </script>
+   <script th:src="@{/js/countries.js}"></script>
+</body>
+</html>
